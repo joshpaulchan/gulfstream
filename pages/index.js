@@ -2,6 +2,9 @@ import Head from 'next/head'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
+const copyToClipboard = (text) => navigator.clipboard.writeText(text)
+const generateBookmarkletFromCode = (code) => `javascript:(${code})()`
+
 const BookmarkListCell = ({ bookmark, onClickBookmark }) => {
   return (
     <div onClick={() => onClickBookmark(bookmark)}>{bookmark.name}</div>
@@ -22,7 +25,7 @@ const BookmarkDetail = ({ bookmark, onUpdate }) => {
       <h1>{bookmark.id} - {bookmark.name}</h1>
       <pre>{bookmark.code}</pre>
       <div>
-        <button>Copy As Bookmarklet</button>
+        <button onClick={() => copyToClipboard(generateBookmarkletFromCode(bookmark.code))}>Copy As Bookmarklet</button>
       </div>
     </div>
   )
