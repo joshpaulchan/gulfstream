@@ -1,6 +1,5 @@
 import Head from "next/head"
 import { useState } from "react"
-import BookmarkDetail from "../components/BookmarkDetail"
 import BookmarkEmptyDetail from "../components/BookmarkEmptyDetail"
 import BookmarkList from "../components/BookmarkList"
 import styles from "../styles/Home.module.css"
@@ -23,11 +22,7 @@ export const Home = () => {
         <title>Gulfstream</title>
       </Head>
       <BookmarkList bookmarks={bookmarks} />
-      {selected ? (
-        <BookmarkDetail bookmark={selected} />
-      ) : (
-        <BookmarkEmptyDetail />
-      )}
+      <BookmarkEmptyDetail />
     </div>
   )
 }
