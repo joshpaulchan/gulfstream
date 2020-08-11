@@ -1,11 +1,15 @@
 import Head from "next/head"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import BookmarkDetail from "../../components/BookmarkDetail"
 import BookmarkEmptyDetail from "../../components/BookmarkEmptyDetail"
 import BookmarkList from "../../components/BookmarkList"
 import styles from "../../styles/Home.module.css"
 
-export const Detail = ({ bookmarkId }) => {
+export const Detail = () => {
+  const router = useRouter()
+  const { bookmarkId } = router.query
+
   const [bookmarks, setBookmarks] = useState([
     {
       id: 1,
