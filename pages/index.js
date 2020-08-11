@@ -1,43 +1,9 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import BookmarkDetail from "../components/BookmarkDetail";
+import BookmarkEmptyDetail from "../components/BookmarkEmptyDetail";
+import BookmarkList from "../components/BookmarkList";
 import styles from '../styles/Home.module.css'
-
-const copyToClipboard = (text) => navigator.clipboard.writeText(text)
-const generateBookmarkletFromCode = (code) => `javascript:(function(){${code}})()`
-
-const BookmarkListCell = ({ bookmark, onClickBookmark }) => {
-  return (
-    <div onClick={() => onClickBookmark(bookmark)}>{bookmark.name}</div>
-  )
-}
-
-const BookmarkList = ({ bookmarks, onClickBookmark }) => {
-  return (
-    <div className={styles.bookMarkList}>
-      {bookmarks.map(bookmark => <BookmarkListCell key={bookmark.id} bookmark={bookmark} onClickBookmark={onClickBookmark} />)}
-    </div>
-  )
-}
-
-const BookmarkDetail = ({ bookmark, onUpdate }) => {
-  return (
-    <div className={styles.preview}>
-      <h1>{bookmark.id} - {bookmark.name}</h1>
-      <pre>{bookmark.code}</pre>
-      <div>
-        <button onClick={() => copyToClipboard(generateBookmarkletFromCode(bookmark.code))}>Copy As Bookmarklet</button>
-      </div>
-    </div>
-  )
-}
-
-const EmptyDetail = () => {
-  return (
-    <div className={styles.preview}>
-      Select a bookmark from the list.
-    </div>
-  )
-}
 
 export const Home = () => {
   const [bookmarks, setBookmarks] = useState([
@@ -55,7 +21,7 @@ export const Home = () => {
         <title>Gulfstream</title>
       </Head>
       <BookmarkList bookmarks={bookmarks} onClickBookmark={selectBookmark} />
-      {selected ? <BookmarkDetail bookmark={selected}/> : <EmptyDetail />}
+      {selected ? <BookmarkDetail bookmark={selected}/> : <BookmarkEmptyDetail />}
     </div>
   )
 }
