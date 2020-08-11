@@ -44,7 +44,7 @@ export const Home = () => {
   ])
   
   const [selected, select] = useState(null)
-  const selectBookmark = (bookmark) => selected && select.id != bookmark.id && select(bookmark)
+  const selectBookmark = (bookmark) => selected && selected.id != bookmark.id && select(bookmark)
 
   return (
     <div className={styles.container}>
