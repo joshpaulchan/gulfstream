@@ -16,15 +16,14 @@ export const Detail = ({ bookmarkId }) => {
     { id: 2, name: "alert hi", code: "alert('hi')" },
     { id: 3, name: "alert bye", code: "alert('bye')" },
   ])
-  const selectBookmark = (bookmark) => null
-  const selected = bookmarks.find((bookmark) => bookmark.id === bookmarkId)
+  const selected = bookmarks.find((bookmark) => bookmark.id == bookmarkId)
 
   return (
     <div className={styles.container}>
       <Head>
         <title>Gulfstream</title>
       </Head>
-      <BookmarkList bookmarks={bookmarks} onClickBookmark={selectBookmark} />
+      <BookmarkList bookmarks={bookmarks} />
       {selected ? (
         <BookmarkDetail bookmark={selected} />
       ) : (
