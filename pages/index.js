@@ -1,9 +1,17 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-const BookmarkList = () => {
+const BookmarkListCell = ({ bookmark }) => {
   return (
-    <div className={styles.bookMarkList}></div>
+    <div>{bookmark.name}</div>
+  )
+}
+
+const BookmarkList = ({ bookmarks }) => {
+  return (
+    <div className={styles.bookMarkList}>
+      {bookmarks.map(bookmark => <BookmarkListCell bookmark={bookmark} />)}
+    </div>
   )
 }
 
