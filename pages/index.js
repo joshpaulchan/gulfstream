@@ -3,7 +3,7 @@ import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 const copyToClipboard = (text) => navigator.clipboard.writeText(text)
-const generateBookmarkletFromCode = (code) => `javascript:(${code})()`
+const generateBookmarkletFromCode = (code) => `javascript:(function(){${code}})()`
 
 const BookmarkListCell = ({ bookmark, onClickBookmark }) => {
   return (
