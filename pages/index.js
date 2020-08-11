@@ -16,7 +16,7 @@ const BookmarkList = ({ bookmarks, onClickBookmark }) => {
   )
 }
 
-const BookmarkPreview = ({ bookmark }) => {
+const BookmarkDetail = ({ bookmark, onUpdate }) => {
   return (
     <div className={styles.preview}>
       <h1>{bookmark.id} - {bookmark.name}</h1>
@@ -28,7 +28,7 @@ const BookmarkPreview = ({ bookmark }) => {
   )
 }
 
-const EmptyPreview = ({}) => {
+const EmptyDetail = () => {
   return (
     <div className={styles.preview}>
       Select a bookmark from the list.
@@ -52,7 +52,7 @@ export const Home = () => {
         <title>Gulfstream</title>
       </Head>
       <BookmarkList bookmarks={bookmarks} onClickBookmark={selectBookmark} />
-      {selected ? <BookmarkPreview bookmark={selected}/> : <EmptyPreview />}
+      {selected ? <BookmarkDetail bookmark={selected}/> : <EmptyDetail />}
     </div>
   )
 }
