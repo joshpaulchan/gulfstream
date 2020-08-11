@@ -28,7 +28,7 @@ const BookmarkPreview = ({ bookmark }) => {
   )
 }
 
-const EmptyPreview = ({ bookmark }) => {
+const EmptyPreview = ({}) => {
   return (
     <div className={styles.preview}>
       Select a bookmark from the list.
