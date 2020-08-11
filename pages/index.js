@@ -2,16 +2,16 @@ import Head from 'next/head'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-const BookmarkListCell = ({ bookmark }) => {
+const BookmarkListCell = ({ bookmark, onClickBookmark }) => {
   return (
-    <div>{bookmark.name}</div>
+    <div onClick={() => onClickBookmark(bookmark)}>{bookmark.name}</div>
   )
 }
 
-const BookmarkList = ({ bookmarks }) => {
+const BookmarkList = ({ bookmarks, onClickBookmark }) => {
   return (
     <div className={styles.bookMarkList}>
-      {bookmarks.map(bookmark => <BookmarkListCell key={bookmark.id} bookmark={bookmark} />)}
+      {bookmarks.map(bookmark => <BookmarkListCell key={bookmark.id} bookmark={bookmark} onClickBookmark={onClickBookmark} />)}
     </div>
   )
 }
@@ -43,13 +43,15 @@ export default Home = () => {
     { id: 3, name: "alert bye", code: "alert('bye')" },
   ])
   
-  const selected = useState(null)
+  const [selected, select] = useState(null)
+  const selectBookmark = (bookmark) => selected && select.id != bookmark.id && select(bookmark)
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Gulfstream</title>
       </Head>
-      <BookmarkList bookmarks={bookmarks}/>
+      <BookmarkList bookmarks={bookmarks} onClickBookmark={selectBookmark} />
       {selected ? <BookmarkPreview bookmark={selected}/> : <EmptyPreview />}
     </div>
   )
